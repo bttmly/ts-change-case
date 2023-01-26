@@ -143,8 +143,8 @@ const PathTests: PathTestCases = [
   "some/terrible2/error/condition/how/sad",
 ]
 
+type StringConv = (s: string) => string;
 type AnyTestCase = [string, string, string, string, string, string, string, string]
-
 type VoidFn<A = void> = (a: A) => void;
 
 type TestResult = {
@@ -189,6 +189,7 @@ function test (title: string, fn: VoidFn<VoidFn<VoidFn>>) {
   tests.push(tc);
 }
 
+// this ensures the typesafe values declared above match the runtime return type of the change-case functions
 function testTypes<T extends AnyTestCase> (name: string, convs: T, f: (s: string) => string) {
   test(`types: ${name}`, t => {
     for (const [idx, conv] of convs.entries()) {
@@ -197,7 +198,7 @@ function testTypes<T extends AnyTestCase> (name: string, convs: T, f: (s: string
   });
 }
 
-type StringConv = (s: string) => string;
+// this ensures the typed change-case functions delegate to the correct original change-case functions
 function testConversion<F extends StringConv> (name: string, originalFn: StringConv, typedFn: F) {
   test(`typed fns: ${name}`, t => {
     for (const str of testCases) {
