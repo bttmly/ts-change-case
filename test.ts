@@ -1,6 +1,6 @@
-import * as cc from "change-case";
-import * as assert from "assert";
-import { ChangeCase as CC, changeCase as ccTyped } from "./mod";
+import * as cc from "npm:change-case";
+import { ChangeCase as CC, changeCase as ccTyped } from "./mod.ts";
+import { assertEquals } from "https://deno.land/std@0.173.0/testing/asserts.ts";
 
 type TestCases = [
   "",
@@ -193,7 +193,7 @@ function test (title: string, fn: VoidFn<VoidFn<VoidFn>>) {
 function testTypes<T extends AnyTestCase> (name: string, convs: T, f: (s: string) => string) {
   test(`types: ${name}`, t => {
     for (const [idx, conv] of convs.entries()) {
-      t(() => assert.equal(conv, f(testCases[idx])))
+      t(() => assertEquals(conv, f(testCases[idx])))
     }
   });
 }
@@ -202,7 +202,7 @@ function testTypes<T extends AnyTestCase> (name: string, convs: T, f: (s: string
 function testConversion<F extends StringConv> (name: string, originalFn: StringConv, typedFn: F) {
   test(`typed fns: ${name}`, t => {
     for (const str of testCases) {
-      t(() => assert.equal(originalFn(str), typedFn(str)));
+      t(() => assertEquals(originalFn(str), typedFn(str)));
     }
   });
 }
@@ -250,4 +250,4 @@ for (const [idx, tc] of tests.entries()) {
 console.log(total, "tests");
 console.log(passed, "passed");
 console.log(failed, "failed");
-if (failed > 0) process.exitCode = 1;
+if (failed > 0) Deno.exit(1);

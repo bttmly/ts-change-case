@@ -1,5 +1,5 @@
-import * as cc from "change-case";
-import { ChangeCase as CC } from "./types";
+import * as cc from "npm:change-case";
+import { ChangeCase as CC } from "./types.ts";
 
 export function camelCase<S extends string>(s: S): CC.Camel<S> {
   return cc.camelCase(s) as CC.Camel<S>;

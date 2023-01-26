@@ -10,9 +10,9 @@ export {
   dotCase,
   pathCase,
   changeCase,
-} from "./change-case-typed";
+} from "./change-case-typed.ts";
 
-export {
+export type {
   DigitChars,
   LowercaseChars,
   UppercaseChars,
@@ -32,4 +32,4 @@ export {
   SentenceCase,
   ConstCase,
   ChangeCase
-} from "./types";
+} from "./types.ts";

@@ -109,6 +109,7 @@ export type CamelCase<S extends string, D extends string = Delimiters> = Join<Ma
 export type SentenceCase<S extends string, D extends string = Delimiters> = Join<MapToSentence<SplitStrip<S, D>>, " ">;
 export type ConstCase<S extends string, D extends string = Delimiters> = Join<MapToUppercase<SplitStrip<S, D>>, "_">;
 
+// deno-lint-ignore no-namespace
 export namespace ChangeCase {
   export type Capital<S extends string, D extends string = Delimiters> = CapitalCase<S, D>
   export type Header<S extends string, D extends string = Delimiters> = HeaderCase<S, D>
