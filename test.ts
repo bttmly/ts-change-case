@@ -1,6 +1,6 @@
 import * as cc from "change-case";
 import * as assert from "assert";
-import { ChangeCase as CC, changeCase as ccTyped } from "./index";
+import { ChangeCase as CC, changeCase as ccTyped } from "./mod";
 
 type TestCases = [
   "",
