@@ -1,4 +1,4 @@
-import * as cc from "npm:change-case";
+import * as cc from "https://esm.sh/change-case@4.1.2"
 import { ChangeCase as CC } from "./types.ts";
 
 export function camelCase<S extends string>(s: S): CC.Camel<S> {
